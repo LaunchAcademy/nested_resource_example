@@ -35,5 +35,14 @@ feature 'admin creates products', %Q{
     expect(page).to have_content("can't be blank")
   end
 
-  scenario 'create an invalid product'
+  scenario 'create an invalid product' do
+    #create a category to use on the form prior to loading
+    category = FactoryGirl.create(:category)
+
+    visit new_admin_product_path
+    select category.name, from: 'Category'
+    click_button 'Create Product'
+
+    expect(page).to have_content("can't be blank")
+  end
 end
