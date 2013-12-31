@@ -28,7 +28,12 @@ feature 'admin creates products', %Q{
     expect(page).to_not have_content(another_product.name)
   end
 
-  scenario 'create an invalid category'
+  scenario 'create an invalid category' do
+    visit new_admin_category_path
+    click_button 'Create Category'
+
+    expect(page).to have_content("can't be blank")
+  end
 
   scenario 'create an invalid product'
 end
