@@ -1,11 +1,11 @@
 NestedResource::Application.routes.draw do
   namespace :admin do
-    resources :categories
-    resources :products
+    resources :categories, only: [:new, :create]
+    resources :products, only: [:new, :create]
   end
 
-  resources :categories do
-    resources :products
+  resources :categories, only: [] do
+    resources :products, only: [:index]
   end
 
   root 'homes#show'
