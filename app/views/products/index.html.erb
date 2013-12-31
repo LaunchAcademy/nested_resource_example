@@ -1,0 +1,8 @@
+<h1><%= @category.name %></h1>
+<%- if @products.present? -%>
+  <ul>
+    <%- @products.each do |product| %>
+      <li><%= product.name %></li>
+    <%- end -%>
+  </ul>
+<%- end -%>
