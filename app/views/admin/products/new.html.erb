@@ -1,0 +1,11 @@
+<%= form_for [:admin, @product] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :category_id %>
+  <%= f.select :category_id,
+    Category.all.collect{|c| [c.name, c.id] },
+    include_blank: true %>
+
+  <%= f.submit 'Create Product' %>
+<%- end -%>
